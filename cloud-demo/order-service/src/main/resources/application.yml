@@ -6,13 +6,10 @@ spring:
     username: root
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
-  application:
-    name: orderservice
-  cloud:
-    nacos:
-      server-addr: localhost:8848
-      discovery:
-        cluster-name: SH
+#  cloud:
+#    nacos:
+#      discovery:
+#        cluster-name: SH
 #        namespace: ccdd294c-5f9d-48ae-9c5f-9bc7d97689bc
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
