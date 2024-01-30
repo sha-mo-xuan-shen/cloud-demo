@@ -33,9 +33,9 @@ public class UserController {
      */
     @GetMapping("/{id}")
     public User queryById(@PathVariable Long id
-            ,@RequestHeader String yiyan
+            ,@RequestHeader(required = false) String wocao//必须加上这个required=false
     ) {
-        System.err.println(yiyan);
+        System.err.println(wocao);
         return userService.queryById(id);
     }
 //    @GetMapping("/otto")
