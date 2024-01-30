@@ -1,7 +1,7 @@
 package cn.itcast.order.pojo;
 
 import lombok.Data;
-
+import com.feignapi.pojo.User;
 @Data
 public class Order {
     private Long id;

@@ -1,0 +1,29 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      server-addr: localhost:80
+    gateway:
+      routes:
+        - id: user-service #路由标识
+          uri: lb://userservice #路由的目标地址
+          predicates: #路由断言，判断请求是否符合规则
+            - Path=/user/** #路径断言，判断路径是否是以/user开头，如果是则符合
+          filters:
+            - AddRequestHeader=yiyan, dingzhen #中间必须要有一个逗号
+        - id: order-service
+          uri: lb://orderservice
+          predicates: #断言
+            - Path=/order/**
+#            - After=2024-01-29T16:05:00.000+08:00[Asia/Shanghai] #这个表示必须在指定时间之后才能访问，否则会返回403
+#            - Before=2024-01-29T16:30:00.000+08:00[Asia/Shanghai] #必须在这个时间点之前才能访问
+#            - Between=2024-01-29T16:05:00.000+08:00[Asia/Shanghai],2024-01-29T16:30:00.000+08:00[Asia/Shanghai] #只能在这个时间段内访问
+#            - Cookie=chocolate,ch.p
+#            - Header=X-Request-Id,\d+
+#            - Host=*.example.com
+logging:
+  level:
+    com.gateway: DEBUG

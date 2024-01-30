@@ -31,3 +31,12 @@ ribbon:
   eager-load: #饥饿加载
     clients: userservice
     enabled: true
+feign:
+  client:
+    config:
+      default:
+        logger-level: basic
+  httpclient:
+    enabled: true
+    max-connections: 200
+    max-connections-per-route: 50
